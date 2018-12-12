@@ -6,7 +6,10 @@ defmodule Ff.MixProject do
       app: :ff,
       version: "0.1.0",
       elixir: "~> 1.6",
-      escript: [main_module: FF.CLI],
+      escript: [
+        main_module: FF.CLI,
+        shebang: shebang
+      ],
       deps: deps()
     ]
   end
@@ -26,5 +29,9 @@ defmodule Ff.MixProject do
       {:poison, "~> 2.2"},
       {:netrc, "~> 0.0.1"}
     ]
+  end
+
+  defp shebang do 
+    "#! #{System.find_executable("escript")}\n"
   end
 end
