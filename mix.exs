@@ -8,7 +8,7 @@ defmodule Ff.MixProject do
       elixir: "~> 1.6",
       escript: [
         main_module: FF.CLI,
-        shebang: shebang
+        shebang: shebang()
       ],
       deps: deps()
     ]
@@ -17,7 +17,7 @@ defmodule Ff.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:httpoison],
+      applications: [:httpoison, :timex],
       extra_applications: [:logger]
     ]
   end
@@ -27,11 +27,13 @@ defmodule Ff.MixProject do
     [
       {:httpoison, "~> 1.4"},
       {:poison, "~> 2.2"},
+      {:timex, "~> 3.1"},
+      {:tzdata, "== 0.1.8", override: true},
       {:netrc, "~> 0.0.1"}
     ]
   end
 
-  defp shebang do 
+  defp shebang do
     "#! #{System.find_executable("escript")}\n"
   end
 end

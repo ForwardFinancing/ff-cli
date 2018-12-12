@@ -69,7 +69,9 @@ defmodule FF do
       deployed_branch = Enum.find(branches, fn(b) ->
         b["commit"]["sha"] |> String.starts_with?(deployed_sha) end)["name"]
       last_deployer = last_deploy["user"]["email"]
-      last_deploy_at = last_deploy["updated_at"]
+      last_deploy_at = Timex.parse(last_deploy["updated_at"], "{ISO:Extended}")
+                       |> elem(1)
+                       |> Timex.Timezone.convert(Timex.Timezone.local)
       # TODO: Make the strings have some color.
       header = "#{repo} ** #{app}"
       IO.puts("#{header}
