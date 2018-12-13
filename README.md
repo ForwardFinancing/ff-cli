@@ -1,21 +1,30 @@
-# Ff
+# Forward Financing CLI
 
-**TODO: Add description**
+Forward Financing CLI!
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ff` to your list of dependencies in `mix.exs`:
+You can install this package with `homebrew` from https://github.com/ForwardFinancing/homebrew-formulas
 
-```elixir
-def deps do
-  [
-    {:ff, "~> 0.1.0"}
-  ]
-end
+`brew install ForwardFinancing/homebrew-formulas/ff`
+
+## Setup
+Make sure that your Heroku and Github credentials are stored `~/.netrc`.
+
+If you have Heroku CLI installed, you should see your Heroku creds in this file already.
+
+For Github access, you will have to generate an access token and store it as the `password` value in your `.netrc` file.
+
+
+```bash
+$ cat ~/.netrc
+machine api.heroku.com
+  login <your_email>@forwardfinancing.com
+  password <your_heroku_access_token>
+machine git.heroku.com
+  login <your_email>@forwardfinancing.com
+  password <your_heroku_access_token>
+machine github.com
+  login <your_github_username>
+  password <your_github_access_token>
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ff](https://hexdocs.pm/ff).
-
