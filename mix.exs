@@ -17,7 +17,7 @@ defmodule Ff.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      applications: [:httpoison, :timex],
+      applications: [:httpoison, :timex, :tzdata],
       extra_applications: [:logger]
     ]
   end
@@ -28,7 +28,7 @@ defmodule Ff.MixProject do
       {:httpoison, "~> 1.4"},
       {:poison, "~> 2.2"},
       {:timex, "~> 3.1"},
-      {:tzdata, "== 0.1.8", override: true},
+      {:tzdata, "~> 0.5.19"},
       {:netrc, "~> 0.0.1"}
     ]
   end
