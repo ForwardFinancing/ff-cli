@@ -61,11 +61,25 @@ defmodule FF do
   defmodule CLI do
     def main(args) do
       { opts, args, _ } = OptionParser.parse(args)
+
       case args do
         ["who-has" | extra_args] -> who_has(extra_args)
+        ["wh" | extra_args] -> who_has(extra_args)
+        ["logo" | _] -> welcome()
+        _ -> welcome()
       end
 
       apps = Map.values(FF.repo_apps)
+    end
+
+    def welcome do
+      IO.puts("""
+  ___                           _   ___ _                   _
+ | __|__ _ ___ __ ____ _ _ _ __| | | __(_)_ _  __ _ _ _  __(_)_ _  __ _
+ | _/ _ \\ '_\\ V  V / _` | '_/ _` | | _|| | ' \\/ _` | ' \\/ _| | ' \\/ _` |
+ |_|\\___/_|  \\_/\\_/\\__,_|_| \\__,_| |_| |_|_||_\\__,_|_||_\\__|_|_||_\\__, |
+                                                                  |___/
+""")
     end
 
     def who_has([app]) do
